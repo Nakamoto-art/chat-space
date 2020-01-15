@@ -15,10 +15,9 @@ Things you may want to cover:
 ## usersテーブル
 |Columns|Type|Options|
 |-------|----|-------|
-|name|intger|null: false|
+|name|text|null: false|
 |email|string|null :false, unique :true|
 |password|intger|null :false|
-|groups_user_id|null: false, foregin/key: true|
 
 ## アソシエーション
 - has_many :messages
@@ -29,7 +28,7 @@ Things you may want to cover:
 ## messagesテーブル
 |Columns|Type|Options|
 |-------|----|-------|
-|body|text|null: false|
+|body|text|
 |image|string|
 |user_id|integer|null: false, foregin_key: true|
 |group_id|integer|null: false, foregin_key: true|
@@ -42,11 +41,11 @@ Things you may want to cover:
 ## groupsテーブル
 |Columns|Type|Options|
 |-------|----|-------|
-|name|
+|name|text|null :false|
 
 ## アソシエーション
 - has_many :messages
-- has_many :users
+- has_many :groups_users
 - has_many :users, through :groups_users
 
 
