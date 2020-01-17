@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-
-  root "messages#index"
-
   module ChatSpace
     class Application < Rails::Application
       config.generators do |g|
