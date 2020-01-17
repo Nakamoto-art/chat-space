@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-
+  devise_for :users
   root "messages#index"
+  resources :users, only: [:edit, :update]
 
-  module ChatSpace
-    class Application < Rails::Application
-      config.generators do |g|
-        g.stylesheets false
-        g.javascripts false
-        g.helper false
-        g.test_framework false
-      end
-    end
-  end
 end
