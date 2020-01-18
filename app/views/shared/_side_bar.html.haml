@@ -6,18 +6,20 @@
     .side-bar
       .side-bar__header
         .side-bar__header__box
-          %p{class: "side-bar__header__box__user-name"}
+          %p{class: "user-name"}
             = current_user.name
-          %ul{class: "side-bar__header__box__icons"}
-            %li{class: "side-bar__header__box__icons__new-group"}
-              = link_to new_group_path(current_user) do
+          %ul{class: "box-icons"}
+            %li{class: "new-group-icon"}
+              = link_to new_group_path do
                 = icon('far', 'edit', class: 'icon')
-            %li{class: "side-bar__header__box__icons__edit-user"}
+            %li{class: "edit-user-icon"}
               = link_to edit_user_path(current_user) do
                 = icon('fas', 'cog', class: 'icon')
-      .side-bar__group-list
-        .side-bar__group-list__group
-          .side-bar__group-list__group__group-name
-            %h techcamp
-          .side-bar__group-list__group__latest-message
-            %h まだメッセージがありません
+      .side-bar__groups-list
+        - current_user.groups.each do |group|
+          .group
+            = link_to '#', class:"group" do
+              .group__name
+                = group.name
+              .group__message
+                メッセージはまだありません。

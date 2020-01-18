@@ -21,7 +21,7 @@
         display: flex;
         justify-content: space-between;
         font-weight: bold;
-        &__icons {
+        .box-icons {
           display: flex;
           li {
             margin-left: 0.3rem;
@@ -32,18 +32,19 @@
         }
       }
     }
-    &__group-list {
+    &__groups-list {
       background-color: #2f3e51;
       height: calc(100vh - 100px);
       padding: 20px 20px 0;
-      &__group {
+      .group {
         margin-bottom: 40px;
-        &__group-name {
+        text-decoration: none;
+        &__name{
         font-size: 15px;
           color: #ffffff;
           margin-bottom: 5px;
         }
-        &__latest-message {
+        &__message {
           font-size: 11px;
           color: #ffffff;
         }
