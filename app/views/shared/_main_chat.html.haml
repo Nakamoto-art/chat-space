@@ -1,0 +1,31 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: "utf-8"}
+  %body
+    .main-chat
+      .group
+        .group__name
+          = @group.name
+        .group__member
+          - @group.users.each do |user|
+            = user.name
+        = link_to 'Edit', edit_group_path(@group), class: 'edit-btn'
+      .message
+        - current_user.messages.each do |message|
+          .message-box
+            .upper-message
+              .upper-message__user-name
+                = current_user.name
+              .upper-message__date
+                = message.created_at
+            .lower-message__message
+              = message.content
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = icon('fas', 'image', class: 'icon')
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'submit-btn'
