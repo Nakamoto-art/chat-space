@@ -20,7 +20,12 @@
               .upper-message__date
                 = message.created_at
             .lower-message__message
-              = message.content
+              .message__text
+                = message.content
+              .message__photo
+                -if message.image.present?
+                  %span
+                    = image_tag message.image, size: "100x80"
       .form
         = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'

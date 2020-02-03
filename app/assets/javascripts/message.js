@@ -1,44 +1,4 @@
 $(function(){
-  function buildHTML(message){
-    if ( message.image ) {
-      var html =
-        `<div class="message-box" data-message-id=${message.id}>
-            <div class="upper-message">
-              <div class="upper-message__user-name">
-                ${message.user_name}
-            </div>
-              <div class="upper-message__date">
-              ${message.date}
-              </div>
-          </div>
-          <div class="lower-message">
-              <p class="lower-message__message">
-                ${message.content}
-              </p>
-            </div>
-            <img src=${message.image} >
-          </div>`
-      return html;
-    } else {
-      var html =
-      `<div class="message-box" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-              ${message.date}
-            </div>
-          </div>
-          <div class="lower-message">
-            <p class="lower-message__message">
-              ${message.content}
-            </p>
-          </div>
-        </div>`
-      return html;
-    };
-  }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -67,9 +27,10 @@ $(function(){
 
   var buildHTML = function(message) {
     if (message.content && message.image) {
+      console.log(1)
       //data-idが反映されるようにしている
       var html =
-        `<div class="message" data-message-id=${message.id}>
+        `<div class="message-box" data-message-id=${message.id}>
           <div class="upper-message">
             <div class="upper-message__user-name">
               ${message.user_name}
@@ -79,51 +40,50 @@ $(function(){
             </div>
             </div>
             <div class="lower-message">
-            <p class="lower-message__message">
-              ${message.content}
-            </p>
-            <img src=" message.image" class="lower-message__image" >
-          </div>
-        </div>`
+              <p class="lower-message__message">
+                ${message.content}
+              </p>
+              <img src="${message.image}" class="lower-message__image" >
+            </div>
+          </div>`
       return html;
     } else if (message.content) {
+      console.log(2)
       //同様に、data-idが反映されるようにしている
       var html =
-        `<div class="message" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="lower-message">
-            <p class="lower-message__message">
-              ${message.content}
-            </p>
-          </div>
+        `<div class="message-box" data-message-id=${message.id}>
+        <div class="upper-message">
+        <div class="upper-message__user-name">
+        ${message.user_name}
+        </div>
+        <div class="upper-message__date">
+        ${message.created_at}
+        </div>
+        </div>
+        <div class="lower-message__message">
+        ${message.content}
+        </div>
         </div>`
       return html;
     } else if (message.image) {
+      console.log(3)
       //同様に、data-idが反映されるようにしている
       var html =
-        `<div class="message" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="lower-message">
-            <img src="${message.image}" class="lower-message__image" >
-          </div>
+        `<div class="message-box" data-message-id=${message.id}>
+        <div class="upper-message">
+        <div class="upper-message__user-name">
+        ${message.user_name}
+        </div>
+        <div class="upper-message__date">
+        ${message.created_at}
+        </div>
+        </div>
+        <div class="lower-message__message">
+        <img src="${message.image}" class="lower-message__image" >
+        </div>
         </div>`
       return html;
     };
-    return html;
   };
 
   var reloadMessages = function() {
