@@ -43,7 +43,9 @@ $(function(){
               <p class="lower-message__message">
                 ${message.content}
               </p>
-              <img src="${message.image}" class="lower-message__image" >
+              <div class="message-photo">
+                <img src="${message.image}" class="lower-message__image" >
+              </div>
             </div>
           </div>`
       return html;
@@ -52,39 +54,45 @@ $(function(){
       //同様に、data-idが反映されるようにしている
       var html =
         `<div class="message-box" data-message-id=${message.id}>
-        <div class="upper-message">
-        <div class="upper-message__user-name">
-        ${message.user_name}
-        </div>
-        <div class="upper-message__date">
-        ${message.created_at}
-        </div>
-        </div>
-        <div class="lower-message__message">
-        ${message.content}
-        </div>
+          <div class="upper-message">
+            <div class="upper-message__user-name">
+              ${message.user_name}
+            </div>
+            <div class="upper-message__date">
+              ${message.created_at}
+            </div>
+          </div>
+          <div class="lower-message">
+            <p class="lower-message__message">
+              ${message.content}
+            </p>
+          </div>
         </div>`
       return html;
     } else if (message.image) {
       console.log(3)
       //同様に、data-idが反映されるようにしている
       var html =
-        `<div class="message-box" data-message-id=${message.id}>
-        <div class="upper-message">
+      `<div class="message-box" data-message-id=${message.id}>
+      <div class="upper-message">
         <div class="upper-message__user-name">
-        ${message.user_name}
+          ${message.user_name}
         </div>
         <div class="upper-message__date">
-        ${message.created_at}
+          ${message.created_at}
         </div>
         </div>
-        <div class="lower-message__message">
-        <img src="${message.image}" class="lower-message__image" >
+        <div class="lower-message">
+          <div class="message-photo">
+            <img src="${message.image}" class="lower-message__image" >
+          </div>
         </div>
-        </div>`
+      </div>`
       return html;
     };
   };
+
+
 
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
