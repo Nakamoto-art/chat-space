@@ -49,7 +49,6 @@ $(function(){
           </div>`
       return html;
     } else if (message.content) {
-      console.log(2)
       //同様に、data-idが反映されるようにしている
       var html =
         `<div class="message-box" data-message-id=${message.id}>
@@ -69,7 +68,6 @@ $(function(){
         </div>`
       return html;
     } else if (message.image) {
-      console.log(3)
       //同様に、data-idが反映されるようにしている
       var html =
       `<div class="message-box" data-message-id=${message.id}>
@@ -119,7 +117,7 @@ $(function(){
       }
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
