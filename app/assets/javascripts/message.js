@@ -117,9 +117,8 @@ $(function(){
       }
     })
     .fail(function() {
-      if (messages.length === 0) {
-      alert('error');
-    }});
+        alert('error');
+    });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 7000);
