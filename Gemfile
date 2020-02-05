@@ -62,7 +62,6 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'pry-rails'
-gem 'carrierwave'
 gem 'mini_magick'
 
 group :production do
@@ -76,3 +75,6 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 end
+
+gem 'carrierwave'
+gem 'fog-aws'
