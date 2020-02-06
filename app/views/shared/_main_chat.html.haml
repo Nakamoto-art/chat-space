@@ -13,7 +13,19 @@
         = link_to 'Edit', edit_group_path(@group), class: 'edit-btn'
       .message
         - @messages.each do |message|
-          = render partial: "messages/messages", locals: { message: message }
+          .message-box{data: {message: {id: message.id}}}
+            .upper-message
+              .upper-message__user-name
+                = message.user.name
+              .upper-message__date
+                = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+            .lower-message_message
+              .message__text
+                = message.content
+              .message__photo
+                - if message.image.present?
+                  %span
+                    = image_tag message.image, size: "100x80"
       .form
         = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
